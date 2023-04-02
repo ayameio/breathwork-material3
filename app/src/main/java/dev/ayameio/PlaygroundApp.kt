@@ -32,9 +32,8 @@ import dev.ayameio.ui.theme.PlaygroundTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(showSystemUi = true)
 @Composable
-fun PlaygroundApp(modifier: Modifier = Modifier, viewModel: PlaygroundAppViewModel = viewModel()) {
+fun PlaygroundApp(modifier: Modifier = Modifier) {
     PlaygroundTheme {
-        val passedOnboarding = viewModel.passed
         var selectedItem by remember { mutableStateOf(0) }
         val navController = rememberNavController()
         val navigationActions = remember(navController) { HomeNavigationActions(navController) }

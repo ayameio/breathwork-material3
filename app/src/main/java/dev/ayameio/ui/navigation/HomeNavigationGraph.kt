@@ -5,7 +5,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import dev.ayameio.PlaygroundAppViewModel
 import dev.ayameio.ui.HomeScreen
 import dev.ayameio.ui.OnboardScreen
 import dev.ayameio.ui.ProfileScreen
