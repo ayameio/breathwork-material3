@@ -5,21 +5,29 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dev.ayameio.PlaygroundAppViewModel
+import dev.ayameio.ui.HomeScreen
+import dev.ayameio.ui.OnboardScreen
+import dev.ayameio.ui.ProfileScreen
 
 @Composable
 fun HomeNavigationGraph(
     navController: NavHostController = rememberNavController(),
-    startDestination: String = HomeDestinations.HOME_ROUTE
+    startDestination: String = HomeDestinations.ONBOARD_ROUTE,
+    viewModel: PlaygroundAppViewModel
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
     ) {
+        composable(HomeDestinations.ONBOARD_ROUTE) {
+            OnboardScreen(navController = navController, viewModel = viewModel)
+        }
         composable(HomeDestinations.HOME_ROUTE) {
-            HomeScreen(navController = navController)
+            HomeScreen(navController = navController, viewModel = viewModel)
         }
         composable(HomeDestinations.PROFILE_ROUTE) {
-            ProfileScreen(navController = navController)
+            ProfileScreen(navController = navController, viewModel = viewModel)
         }
     }
 }
