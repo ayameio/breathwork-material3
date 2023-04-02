@@ -1,6 +1,8 @@
 package dev.ayameio
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
@@ -20,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import dev.ayameio.ui.navigation.BottomNavigationTab
 import dev.ayameio.ui.navigation.HomeDestinations
 import dev.ayameio.ui.navigation.HomeNavigationActions
 import dev.ayameio.ui.navigation.HomeNavigationGraph
@@ -38,10 +41,11 @@ fun PlaygroundApp(modifier: Modifier = Modifier, viewModel: PlaygroundAppViewMod
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute =
             navBackStackEntry?.destination?.route ?: HomeDestinations.ONBOARD_ROUTE
+        val showBottomBar = navController.currentBackStackEntryAsState().value?.destination?.route in BottomNavigationTab.values().map { it.route }
 
         Scaffold(
             bottomBar = {
-                if (passedOnboarding) {
+                if (showBottomBar) {
                     NavigationBar {
                         NavigationBarItem(
                             selected = selectedItem == 0,
@@ -73,13 +77,13 @@ fun PlaygroundApp(modifier: Modifier = Modifier, viewModel: PlaygroundAppViewMod
                         )
                     }
                 }
-            },
-            content = {
+            }
+        ) { innerPadding ->
+            Box(modifier = Modifier.padding(innerPadding)) {
                 HomeNavigationGraph(
-                    navController = navController,
-                    viewModel = viewModel
+                    navController = navController
                 )
             }
-        )
+        }
     }
 }

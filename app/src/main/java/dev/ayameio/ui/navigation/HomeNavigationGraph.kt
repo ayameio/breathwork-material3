@@ -14,20 +14,19 @@ import dev.ayameio.ui.ProfileScreen
 fun HomeNavigationGraph(
     navController: NavHostController = rememberNavController(),
     startDestination: String = HomeDestinations.ONBOARD_ROUTE,
-    viewModel: PlaygroundAppViewModel
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
     ) {
         composable(HomeDestinations.ONBOARD_ROUTE) {
-            OnboardScreen(navController = navController, viewModel = viewModel)
+            OnboardScreen(navController = navController)
         }
         composable(HomeDestinations.HOME_ROUTE) {
-            HomeScreen(navController = navController, viewModel = viewModel)
+            HomeScreen(navController = navController)
         }
         composable(HomeDestinations.PROFILE_ROUTE) {
-            ProfileScreen(navController = navController, viewModel = viewModel)
+            ProfileScreen(navController = navController)
         }
     }
 }
