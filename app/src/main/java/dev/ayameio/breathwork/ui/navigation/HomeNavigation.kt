@@ -1,4 +1,4 @@
-package dev.ayameio.ui.navigation
+package dev.ayameio.breathwork.ui.navigation
 
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController

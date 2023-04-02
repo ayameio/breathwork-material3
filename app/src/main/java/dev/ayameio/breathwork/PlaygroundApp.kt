@@ -1,4 +1,4 @@
-package dev.ayameio
+package dev.ayameio.breathwork
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
@@ -23,11 +23,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import dev.ayameio.ui.navigation.BottomNavigationTab
-import dev.ayameio.ui.navigation.HomeDestinations
-import dev.ayameio.ui.navigation.HomeNavigationActions
-import dev.ayameio.ui.navigation.HomeNavigationGraph
-import dev.ayameio.ui.theme.PlaygroundTheme
+import dev.ayameio.breathwork.ui.navigation.BottomNavigationTab
+import dev.ayameio.breathwork.ui.navigation.HomeDestinations
+import dev.ayameio.breathwork.ui.navigation.HomeNavigationActions
+import dev.ayameio.breathwork.ui.navigation.HomeNavigationGraph
+import dev.ayameio.breathwork.ui.theme.PlaygroundTheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,13 +43,17 @@ fun PlaygroundApp(modifier: Modifier = Modifier) {
             navBackStackEntry?.destination?.route ?: HomeDestinations.ONBOARD_ROUTE
 
         val showBottomBar = navController.currentBackStackEntryAsState().value?.destination?.route in BottomNavigationTab.values().map { it.route }
+
         /*
             if showBottomBar is true, that means we passed the 'log in' stage ->> show bottomBar and topBar
+
+            we will need to hide the bottom navigation while having a breathwork session too
+            create a function to evaluate whether we should hide the navbar or no..
         */
         Scaffold(
             topBar = {
                 if (showBottomBar) {
-                    TopAppBar(title = { Text(text = currentRoute.capitalize()) })
+                    TopAppBar(title = { Text(text = currentRoute.replaceFirstChar{ it.uppercase() }) })
                 }
             },
             bottomBar = {

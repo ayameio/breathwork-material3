@@ -1,4 +1,4 @@
-package dev.ayameio.ui
+package dev.ayameio.breathwork.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

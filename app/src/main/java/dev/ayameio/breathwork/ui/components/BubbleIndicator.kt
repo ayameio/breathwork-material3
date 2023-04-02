@@ -1,11 +1,11 @@
-package dev.ayameio.ui.components
+package dev.ayameio.breathwork.ui.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import dev.ayameio.ui.theme.md_theme_light_primaryFixed
+import dev.ayameio.breathwork.ui.theme.md_theme_light_primaryFixed
 
 @Composable
 fun BubbleIndicator(modifier: Modifier = Modifier) {

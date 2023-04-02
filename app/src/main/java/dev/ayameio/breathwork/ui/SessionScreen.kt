@@ -1,4 +1,4 @@
-package dev.ayameio.ui
+package dev.ayameio.breathwork.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,9 +15,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -25,17 +22,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import dev.ayameio.R
-import dev.ayameio.ui.components.BubbleIndicator
-import dev.ayameio.ui.components.SettingArc
-import dev.ayameio.ui.theme.PlaygroundTheme
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import dev.ayameio.breathwork.ui.components.BubbleIndicator
+import dev.ayameio.breathwork.ui.components.SettingArc
+import dev.ayameio.breathwork.ui.theme.PlaygroundTheme
 
 @Preview(showSystemUi = true)
 @Composable
@@ -63,6 +56,7 @@ fun SessionScreen(
     }
 }
 
+// This seems like a massive code duplication. Will fix later.
 @Composable
 fun SettingsView(
     modifier: Modifier = Modifier,
@@ -84,7 +78,11 @@ fun SettingsView(
             Card(
                 modifier = modifier,
                 colors = CardDefaults.cardColors(),
-                content = { Text(modifier = modifier.padding(vertical = 5.dp, horizontal = 15.dp), text = stringResource(id = R.string.tempo), fontWeight = FontWeight.Medium) }
+                content = { Text(
+                    modifier = modifier.padding(vertical = 5.dp, horizontal = 15.dp),
+                    text = stringResource(id = R.string.tempo),
+                    fontWeight = FontWeight.Medium
+                ) }
             )
             SettingArc(value = settingsViewModel.tempoSliderValue, minValue = 1.5f, maxValue = 4f)
             Slider(
@@ -102,7 +100,11 @@ fun SettingsView(
             Card(
                 modifier = modifier,
                 colors = CardDefaults.cardColors(),
-                content = { Text(modifier = modifier.padding(vertical = 5.dp, horizontal = 15.dp), text = stringResource(id = R.string.breaths), fontWeight = FontWeight.Medium) }
+                content = { Text(
+                    modifier = modifier.padding(vertical = 5.dp, horizontal = 15.dp),
+                    text = stringResource(id = R.string.breaths),
+                    fontWeight = FontWeight.Medium
+                ) }
             )
             SettingArc(value = settingsViewModel.breathsSliderValue, minValue = 20f, maxValue = 40f)
             Slider(
@@ -120,7 +122,11 @@ fun SettingsView(
             Card(
                 modifier = modifier,
                 colors = CardDefaults.cardColors(),
-                content = { Text(modifier = modifier.padding(vertical = 5.dp, horizontal = 15.dp), text = stringResource(id = R.string.rounds), fontWeight = FontWeight.Medium) }
+                content = { Text(
+                    modifier = modifier.padding(vertical = 5.dp, horizontal = 15.dp),
+                    text = stringResource(id = R.string.rounds),
+                    fontWeight = FontWeight.Medium
+                ) }
             )
             SettingArc(value = settingsViewModel.roundsSliderValue, minValue = 1f, maxValue = 10f)
             Slider(
@@ -132,31 +138,3 @@ fun SettingsView(
         }
     }
 }
-
-class SettingsViewModel: ViewModel() {
-    private val _settingsState = MutableStateFlow(SettingsState())
-    val settingsState: StateFlow<SettingsState> = _settingsState.asStateFlow()
-
-    var tempoSliderValue    by mutableStateOf(settingsState.value.tempoValue)
-        private set
-    var breathsSliderValue  by mutableStateOf(settingsState.value.breathsValue)
-        private set
-    var roundsSliderValue   by mutableStateOf(settingsState.value.roundsValue)
-        private set
-
-    fun updateTempo(value: Float) {
-        tempoSliderValue = value
-    }
-    fun updateBreaths(value: Float) {
-        breathsSliderValue = value
-    }
-    fun updateRounds(value: Float) {
-        roundsSliderValue = value
-    }
-}
-
-data class SettingsState(
-    val tempoValue:     Float = 2f,
-    val breathsValue:   Float = 25f,
-    val roundsValue:    Float = 3f
-)

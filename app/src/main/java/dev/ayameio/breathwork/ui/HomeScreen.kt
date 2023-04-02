@@ -1,4 +1,4 @@
-package dev.ayameio.ui
+package dev.ayameio.breathwork.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

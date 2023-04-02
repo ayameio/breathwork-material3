@@ -1,4 +1,4 @@
-package dev.ayameio
+package dev.ayameio.breathwork
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import dev.ayameio.ui.theme.PlaygroundTheme
+import dev.ayameio.breathwork.ui.theme.PlaygroundTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

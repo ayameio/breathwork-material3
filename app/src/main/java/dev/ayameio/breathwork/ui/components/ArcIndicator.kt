@@ -1,4 +1,4 @@
-package dev.ayameio.ui.components
+package dev.ayameio.breathwork.ui.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.size
@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import dev.ayameio.ui.utils.drawArcs
+import dev.ayameio.breathwork.ui.utils.drawArcs
 
 @Composable
 fun ArcIndicator(

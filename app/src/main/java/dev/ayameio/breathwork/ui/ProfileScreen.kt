@@ -1,4 +1,4 @@
-package dev.ayameio.ui
+package dev.ayameio.breathwork.ui
 
 import android.widget.DatePicker
 import androidx.compose.foundation.layout.Box

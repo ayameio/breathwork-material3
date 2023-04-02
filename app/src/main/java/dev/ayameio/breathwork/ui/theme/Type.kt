@@ -1,4 +1,4 @@
-package dev.ayameio.ui.theme
+package dev.ayameio.breathwork.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,4 +1,4 @@
-package dev.ayameio.ui.navigation
+package dev.ayameio.breathwork.ui.navigation
 
 import android.graphics.drawable.Icon
 import androidx.compose.material.icons.Icons
