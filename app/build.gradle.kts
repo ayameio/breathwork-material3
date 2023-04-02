@@ -54,7 +54,7 @@ dependencies {
     val navVersion = "2.5.3"
 
     implementation("androidx.navigation:navigation-compose:$navVersion")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)

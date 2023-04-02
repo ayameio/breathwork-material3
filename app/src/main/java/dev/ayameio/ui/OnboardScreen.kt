@@ -37,7 +37,7 @@ fun OnboardScreen(
     var nameValue: String by remember { mutableStateOf("") }
     var emailValue: String by remember { mutableStateOf("") }
 
-    val inputWidth = 260.dp
+    val inputWidth = 210.dp
     val spacerHeight = 30.dp
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
@@ -45,8 +45,6 @@ fun OnboardScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text("Onboard Screen", textAlign = TextAlign.Center)
-            Spacer(modifier = Modifier.height(spacerHeight))
             OutlinedTextField(
                 modifier = modifier.width(inputWidth),
                 value = nameValue,

@@ -13,6 +13,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -20,7 +21,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dev.ayameio.ui.navigation.BottomNavigationTab
@@ -35,15 +35,23 @@ import dev.ayameio.ui.theme.PlaygroundTheme
 @Composable
 fun PlaygroundApp(modifier: Modifier = Modifier) {
     PlaygroundTheme {
-        var selectedItem by remember { mutableStateOf(0) }
+        var selectedItem by remember { mutableStateOf(1) }
         val navController = rememberNavController()
         val navigationActions = remember(navController) { HomeNavigationActions(navController) }
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute =
             navBackStackEntry?.destination?.route ?: HomeDestinations.ONBOARD_ROUTE
-        val showBottomBar = navController.currentBackStackEntryAsState().value?.destination?.route in BottomNavigationTab.values().map { it.route }
 
+        val showBottomBar = navController.currentBackStackEntryAsState().value?.destination?.route in BottomNavigationTab.values().map { it.route }
+        /*
+            if showBottomBar is true, that means we passed the 'log in' stage ->> show bottomBar and topBar
+        */
         Scaffold(
+            topBar = {
+                if (showBottomBar) {
+                    TopAppBar(title = { Text(text = currentRoute.capitalize()) })
+                }
+            },
             bottomBar = {
                 if (showBottomBar) {
                     NavigationBar {
