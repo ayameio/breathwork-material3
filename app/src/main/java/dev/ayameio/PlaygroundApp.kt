@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -49,8 +50,22 @@ fun PlaygroundApp(modifier: Modifier = Modifier) {
                         NavigationBarItem(
                             selected = selectedItem == 0,
                             onClick = {
-                                navigationActions.navigateToHome()
+                                navigationActions.navigateToProfile()
                                 selectedItem = 0
+                            },
+                            icon = {
+                                Icon(
+                                    imageVector = Icons.Default.AccountCircle,
+                                    contentDescription = "Profile"
+                                )
+                            },
+                            label = { Text(text = "Profile") }
+                        )
+                        NavigationBarItem(
+                            selected = selectedItem == 1,
+                            onClick = {
+                                navigationActions.navigateToHome()
+                                selectedItem = 1
                             },
                             icon = {
                                 Icon(
@@ -61,18 +76,18 @@ fun PlaygroundApp(modifier: Modifier = Modifier) {
                             label = { Text(text = "Home") }
                         )
                         NavigationBarItem(
-                            selected = selectedItem == 1,
+                            selected = selectedItem == 2,
                             onClick = {
-                                navigationActions.navigateToProfile()
-                                selectedItem = 1
+                                navigationActions.navigateToSession()
+                                selectedItem = 2
                             },
                             icon = {
                                 Icon(
-                                    imageVector = Icons.Default.AccountCircle,
-                                    contentDescription = "Profile"
+                                    imageVector = Icons.Default.Star,
+                                    contentDescription = "Session"
                                 )
                             },
-                            label = { Text(text = "Profile") }
+                            label = { Text(text = "Session") }
                         )
                     }
                 }
